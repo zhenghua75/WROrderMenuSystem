@@ -8,7 +8,7 @@ git add *
 
 git commit -m "first commit"
 
-git remote add origin https://github.com/zhenghua75/DXInfo.git
+git remote add origin https://github.com/zhenghua75/WROrderMenuSystem.git
 
 git push -u origin master
 
@@ -19,4 +19,4 @@ git pull
 
 ## 拉库
 
-git clone https://github.com/zhenghua75/DXInfo.git
+git clone https://github.com/zhenghua75/WROrderMenuSystem.git
