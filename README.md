@@ -4,7 +4,7 @@
 
 git clone https://github.com/zhenghua75/WROrderMenuSystem.git
 
-## 建库
+## 添加文件
 
 git add *
 
