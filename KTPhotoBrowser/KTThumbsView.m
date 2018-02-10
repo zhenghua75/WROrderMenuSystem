@@ -66,7 +66,10 @@
     for (UIView *view in [self subviews]) {
         if ([view isKindOfClass:[KTThumbView class]]) {
             [reusableThumbViews_ addObject:view];
-            [view removeFromSuperview];
+            //zhenghua 20180210
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [view removeFromSuperview];
+            });
         }
     }
     

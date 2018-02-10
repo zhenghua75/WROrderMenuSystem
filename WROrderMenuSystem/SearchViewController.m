@@ -446,15 +446,17 @@
             [pickerView reloadComponent:2];
             break;
         case 1:
+            if([self.inventoryCategory2 count]>0 && [self.inventoryCategory2 count]>row){
                 category = [self.inventoryCategory2 objectAtIndex:row];
                 [self setCategoryId:category.id];
                 [self getCurInv:category.id];
                 
-            [_imageButton setImage:nil forState:UIControlStateNormal];
-            orderInventory=nil;
-            [addButton setImage:nil forState:UIControlStateNormal];
-            [self setcomponent2];
-            [pickerView reloadComponent:2];
+                [_imageButton setImage:nil forState:UIControlStateNormal];
+                orderInventory=nil;
+                [addButton setImage:nil forState:UIControlStateNormal];
+                [self setcomponent2];
+                [pickerView reloadComponent:2];
+            }
             break;
         case 2:
             _selectedInventoryIndex = (int)row;

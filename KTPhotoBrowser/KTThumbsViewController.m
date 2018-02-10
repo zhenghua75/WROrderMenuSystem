@@ -58,8 +58,9 @@
 - (void)loadView {
     // Make sure to set wantsFullScreenLayout or the photo
     // will not display behind the status bar.
+    
     [super loadView];
-    //[self setWantsFullScreenLayout:YES];
+    
     self.edgesForExtendedLayout=UIRectEdgeNone;
     self.extendedLayoutIncludesOpaqueBars = YES;
     //s1Height=0;

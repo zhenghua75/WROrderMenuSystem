@@ -45,7 +45,11 @@
 }
 
 - (void)reloadData{
-    [self loadView];
+    //zhenghua 20180210
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self loadView];
+    });
+    
     [self setDataSource1:[self data]];
     [self setDataSource2:[self data2]];
     

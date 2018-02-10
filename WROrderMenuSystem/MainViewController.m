@@ -27,13 +27,11 @@
     UIImage *img1 = [UIImage imageWithContentsOfFile:path1];
     if (!img1) {
         self.imageLogoView.image=nil;
-        //img1 = [UIImage imageNamed:@"logo.png"];
     }
     else{
         [self.imageLogoView setImage:img1];
         img1=nil;
     }
-    //86 75
     
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -144,10 +142,6 @@
         if ([twoCode hasPrefix:oneCode] & ![twoCode isEqualToString: oneCode]) {
             
             UIButton *twoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            //UIImage *normalButtonImage = [[UIImage imageNamed:@"StretchButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15) resizingMode:UIImageResizingModeStretch];
-            
-            
-            //UIImage *highlightedButtonImage = [[UIImage imageNamed:@"StretchButton-Highlighted.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15) resizingMode:UIImageResizingModeStretch];
             
             [twoBtn setBackgroundImage:normalButtonImage forState:UIControlStateNormal];
             [twoBtn setBackgroundImage:highlightedButtonImage forState:UIControlStateHighlighted];
@@ -170,7 +164,6 @@
                 [path appendFormat:@"/%@",@"menu-two.png"];
                 UIImage *img = [UIImage imageWithContentsOfFile:path];
                 if (img) {
-                    //_twoLevelMenuViewController =
                     _twoLevelMenuViewController.view.backgroundColor=[[UIColor alloc] initWithPatternImage:img];
                 }
             }
@@ -196,18 +189,12 @@
             CGFloat screenHeight = screenSize.height;
             
             [self.myPopoverController setPopoverContentSize:CGSizeMake(screenWidth-104, 61.0f)];
-            //[self.myPopoverController setPopoverContentSize:CGSizeMake(920, 61.0f)];
             
             [self.myPopoverController
              presentPopoverFromRect:CGRectMake(screenWidth, screenHeight-61, 0, 0)
              inView:self.view
              permittedArrowDirections:UIPopoverArrowDirectionDown
              animated:YES];
-//            [self.myPopoverController
-//             presentPopoverFromRect:CGRectMake(1024, 707, 1, 1)             
-//             inView:self.view
-//             permittedArrowDirections:UIPopoverArrowDirectionDown 
-//             animated:YES];
         }
         else{
             [self.myPopoverController dismissPopoverAnimated:YES];
@@ -231,7 +218,11 @@
     scrollLength = 0;
     for(UIView *subview in [_scrollView subviews]) {
         if([subview isKindOfClass:[UIButton class]]) {
-            [subview removeFromSuperview];
+            //zhenghua 20180210
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [subview removeFromSuperview];
+            });
+            
         } else {
             // Do nothing - not a UIButton or subclass instance
         }
@@ -243,10 +234,6 @@
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
-    
-    //CGRect toolbarFrame = CGRectMake(0, 0, screenWidth-84, 61);
-    //UIToolbar *toolbar_ = [[UIToolbar alloc] initWithFrame:toolbarFrame];
-    //[toolbar_ setBarStyle:UIBarStyleBlack];
     
     NSString *documentPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     
@@ -269,7 +256,6 @@
         highlightedButtonImage = [highlightedButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15) resizingMode:UIImageResizingModeStretch];
     }
     
-    //NSMutableArray *toolbarItems = [[NSMutableArray alloc] init];
     for (int i=0; i<[array count]; i++) {
         if (![[array objectAtIndex:i] isMemberOfClass:[InventoryCategory class]]) {
             continue;
@@ -290,11 +276,12 @@
             CGFloat buttonWidth = size.width+1;
             [btn setFrame:CGRectMake(scrollLength, 0, buttonWidth, 60)];
             [btn setTag:i];
-            //UIBarButtonItem *barBtn = [[UIBarButtonItem alloc] initWithCustomView:btn];
-            //[toolbarItems addObject:barBtn];
-            [_scrollView addSubview:btn];
+            //zhenghua 20180210
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_scrollView addSubview:btn];
+            });
+            
             btn=nil;
-            //barBtn=nil;
             code=nil;
             scrollLength +=buttonWidth+1;
             buttonCount++;
@@ -313,30 +300,18 @@
     highlightedButtonImage=nil;
     
     CGSize size1 = CGSizeMake(screenWidth-84, 61);
-//    [toolbar_ setItems:toolbarItems];
-//    toolbarItems=nil;
-//    
-//    if(scrollLength>screenWidth-84){
-//        size1 = CGSizeMake(scrollLength+50, 60);
-//        [toolbar_ setFrame:CGRectMake(0, 0, scrollLength+50, 61)];
-//    }
-//    
     
     NSMutableString * path = [[NSMutableString alloc] initWithString:documentPath];
     [path appendFormat:@"/%@",@"menu-one.png"];
     UIImage *img = [UIImage imageWithContentsOfFile:path];
     if (img) {
-        //toolbar_.backgroundColor= [[UIColor alloc] initWithPatternImage:img];
         _scrollView.backgroundColor = [UIColor clearColor];
         UIImageView* imageBackgroundView = [[UIImageView alloc] initWithImage:img];
         imageBackgroundView.frame = CGRectMake(84, 707, 940, 61);
         [self.view insertSubview:imageBackgroundView belowSubview:_scrollView];
-    //_scrollView.backgroundColor = [[UIColor alloc] initWithPatternImage:img];
     }
-    //[_scrollView addSubview:toolbar_];
     [_scrollView setContentSize:size1];
     
-    //toolbar_=nil;
     array=nil;
     delegate=nil;
 }

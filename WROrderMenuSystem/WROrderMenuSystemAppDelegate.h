@@ -47,6 +47,7 @@
 @property IBOutlet UIAlertController *alert2;
 @property IBOutlet UIAlertController *alert3;
 @property IBOutlet UIAlertController *alert4;
+@property IBOutlet UIAlertController *alert7;
 
 @property (nonatomic,strong) DeskStatusViewController *deskStatusViewController;
 @property (nonatomic,strong) OrderDeskViewController *orderDeskViewController;
@@ -58,6 +59,7 @@
 -(void)initAlert2;
 -(void)initAlert3;
 -(void)initAlert4;
+-(void)initAlert7;
 -(void)showAlert3:(NSString*)deskNo;
 -(void)showAlert4:(NSString*)deskNo;
 
@@ -92,5 +94,4 @@
 - (void)InitOrderInfo;
 + (void)ClearOrderInfo;
 - (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL;
-
 @end
