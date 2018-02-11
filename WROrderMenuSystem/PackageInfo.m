@@ -31,6 +31,7 @@
         [self setComment:[mo localComment]];
         [self setOptionalGroup:[mo localOptionalGroup]];
         [self setIsOptional:[mo localIsOptional]];
+        [self setQuantity:[mo localQuantity]];
     }
     return self;
 }

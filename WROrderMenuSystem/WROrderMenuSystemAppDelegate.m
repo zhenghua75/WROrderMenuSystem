@@ -544,8 +544,8 @@ NSTimeInterval defaultTimeout=60.0;
                               NSInferMappingModelAutomaticallyOption:@YES,
                               NSSQLitePragmasOption: @{@"journal_mode": @"DELETE"}
                               };
-//
-//    // Check if we need a migration
+
+    // Check if we need a migration
 //    NSDictionary *sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:NSSQLiteStoreType URL:storeURL error:&error];
 //    NSManagedObjectModel *destinationModel = [__persistentStoreCoordinator managedObjectModel];
 //    BOOL isModelCompatible = (sourceMetadata == nil) || [destinationModel isConfiguration:nil compatibleWithStoreMetadata:sourceMetadata];
@@ -978,6 +978,7 @@ NSTimeInterval defaultTimeout=60.0;
         [newManagedObject setLocalIsOptional:dict];
         [newManagedObject setLocalOptionalGroup:dict];
         [newManagedObject setLocalComment:dict];
+        [newManagedObject setLocalQuantity:dict];
         [self saveContext];
         newManagedObject=nil;
     }
@@ -1216,7 +1217,6 @@ NSTimeInterval defaultTimeout=60.0;
     }
     
     [_inventoriesOfCategory setObject:recommandArray forKey:@"this is a recommend category"];
-    //[recommandArray removeAllObjects];
     recommandArray=nil;
     
     _inventoriesOfPackage = [[NSMutableDictionary alloc] init];
@@ -1229,7 +1229,6 @@ NSTimeInterval defaultTimeout=60.0;
             NSMutableArray *invOfPackage = [[NSMutableArray alloc] init];
             [invOfPackage addObject:pi];
             [_inventoriesOfPackage setObject:invOfPackage forKey:strPackageId];
-            //[invOfPackage removeAllObjects];
             invOfPackage=nil;
         }
         else{
@@ -1420,7 +1419,8 @@ NSTimeInterval defaultTimeout=60.0;
             OrderMenuInfo *alloi = [_allInventories objectAtIndex:j];
             if ([alloi.invId isEqualToString:pi.inventoryId]) {
                 OrderMenuInfo *oi = [alloi copy];
-                oi.quantity=[NSDecimalNumber one];
+                //oi.quantity=[NSDecimalNumber one];
+                oi.quantity = [pi.quantity isGreaterThanInt:0]?pi.quantity:[NSDecimalNumber one];
                 oi.amount = pi.salePrice;
                 oi.salePrice = pi.salePrice;
                 oi.comment=@"TC";
@@ -1515,7 +1515,6 @@ NSTimeInterval defaultTimeout=60.0;
     _orderInfo.orderDesk = [[OrderDeskInfo alloc] initWithDictionary:[dict remoteOrderDesk]];
     _orderInfo.lOrderMenu = [self getOrderMenuInfo:[dict remotelOrderMenu]];
     _orderInfo.lLackMenu = [self getLackMenuInfo:[dict remotelLackMenu]];
-    //[self getData];
     [_mainViewController reloadData];
 }
 
@@ -1559,11 +1558,7 @@ NSTimeInterval defaultTimeout=60.0;
     }
     return result;
 }
-//-(void)didSelectRowAtIndex:(NSInteger)row withContext:(id)context tableView:(UITableView *)tableView data:(NSArray *)data invName:(NSString *)packageName btn:(MyButton *)btn{
-//    if (row==-1) {
-//        [self selectPackage:context tableView:tableView data:data addButton:btn invName:packageName btn:btn];
-//    }
-//}
+
 - (void)InitOrderInfo{
       if (!_orderInfo) {
           _orderInfo = [[OrderInfo alloc] init];

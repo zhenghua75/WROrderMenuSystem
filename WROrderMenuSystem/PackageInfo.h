@@ -19,5 +19,7 @@
 @property NSString *optionalGroup;
 @property NSNumber *isOptional;
 @property NSString *comment;
+@property NSDecimalNumber *quantity;
+
 - (id)initWithManagedObject:(NSManagedObject*)mo;
 @end

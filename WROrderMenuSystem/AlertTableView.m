@@ -21,16 +21,13 @@
     if(icount < 5){
         for(int i = 0; i < icount; i++){
             [messageString appendString:@"\n\n"];
-            //[messageString appendString:@"\n\n"];
             tableHeight += 44;
         }
     }else{
         for(int i = 0; i < 5; i++){
             [messageString appendString:@"\n\n"];
-            //[messageString appendString:@"\n\n"];
             tableHeight += 44;
         }
-        //tableHeight = 207;
     }
     [messageString appendString:@"\n"];
     if(self = [super initWithTitle:_title message:messageString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil]){
@@ -62,23 +59,10 @@
 -(void)prepare{
     myTableView = [[UITableView alloc] initWithFrame:CGRectMake(11, 50, 261, tableHeight) style:UITableViewStylePlain];
     myTableView.allowsMultipleSelectionDuringEditing = YES;
-    //myTableView.allowsMultipleSelection=YES;
     [myTableView setEditing:YES];
-    //    if([data count] < 5){
-    //        myTableView.scrollEnabled = NO;
-    //    }
     myTableView.delegate = self;
     myTableView.dataSource = self;
     [self addSubview:myTableView];
-    
-    //    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(11, 50, 261, 4)];
-    //    imgView.image = [UIImage imageNamed:@"top.png"];
-    //    [self addSubview:imgView];
-    //
-    //    imgView = [[UIImageView alloc] initWithFrame:CGRectMake(11, tableHeight+46, 261, 4)];
-    //    imgView.image = [UIImage imageNamed:@"bottom.png"];
-    //    [self addSubview:imgView];
-    
     
     CGAffineTransform myTransform = CGAffineTransformMakeTranslation(0.0, 10);
     [self setTransform:myTransform];
@@ -102,7 +86,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //[self dismissWithClickedButtonIndex:0 animated:YES];
     [self.caller didSelectRowAtIndex:indexPath.row withContext:self.context tableView:myTableView data:data invName:pkgName btn:_btn];
 }
 
@@ -123,7 +106,6 @@
     return [data count];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //return [data count];
     NSDictionary *dictionary = [data objectAtIndex:section];
     NSString *did = [[dictionary.keyEnumerator allObjects] objectAtIndex:0];
     NSArray *array = [dictionary objectForKey:did];

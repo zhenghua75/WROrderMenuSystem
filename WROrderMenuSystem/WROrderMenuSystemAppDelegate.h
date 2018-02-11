@@ -22,6 +22,7 @@
 #import "NSDictionary+Extends.h"
 #import "NSManagedObject+Extends.h"
 #import "InventoryCategory.h"
+#import "NSDecimalNumber+Compare.h"
 
 @interface WROrderMenuSystemAppDelegate : UIResponder <UIApplicationDelegate> {
     UIAlertView *_syncAlertView;

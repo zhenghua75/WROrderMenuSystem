@@ -30,6 +30,7 @@
 - (NSNumber*)localIsOptional;
 - (NSNumber*)localIsRecommend;
 //- (NSString*)packageId;
+- (NSDecimalNumber*)localQuantity;
 
 - (void)setLocalId:(NSDictionary*)dict;
 - (void)setLocalCode:(NSDictionary*)dict;
@@ -62,4 +63,6 @@
 - (void)setLocalInventoryId:(NSDictionary*)dict;
 - (void)setLocalOptionalGroup:(NSDictionary*)dict;
 - (void)setLocalIsOptional:(NSDictionary*)dict;
+
+- (void)setLocalQuantity:(NSDictionary*)dict;
 @end

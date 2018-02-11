@@ -70,6 +70,9 @@
     return [self valueForKey:@"isRecommend"];
 }
 
+-(NSDecimalNumber*)localQuantity{
+    return [self valueForKey:@"quantity"];
+}
 - (void)setLocalId:(NSDictionary*)dict{
     //NSString *strId = [[dict id] copy];
     [self setValue:[dict remoteId] forKey:@"id"];
@@ -164,5 +167,9 @@
 }
 - (void)setLocalIsOptional:(NSDictionary*)dict{
     [self setValue:[dict remoteIsOptional] forKey:@"isOptional"];
+}
+
+- (void)setLocalQuantity:(NSDictionary *)dict{
+    [self setValue:[dict remoteQuantity] forKey:@"quantity"];
 }
 @end

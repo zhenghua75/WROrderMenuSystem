@@ -139,6 +139,7 @@
 		04329CFE1464282D009FD648 /* OrderDeskTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDeskTitleCell.m; sourceTree = "<group>"; };
 		04329CFF1464282D009FD648 /* OrderDeskTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDeskTitleCell.xib; sourceTree = "<group>"; };
 		0438C42B14527FD200D66A01 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		043C3B5D202FFA4A00746EA9 /* WROrderMenuSystem 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "WROrderMenuSystem 2.xcdatamodel"; sourceTree = "<group>"; };
 		043FF3411769572000C44C57 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		043FF37417695E1100C44C57 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		043FF37617695E2500C44C57 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -1173,9 +1174,10 @@
 		04CACBA51440379A0020D4E4 /* WROrderMenuSystem.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				043C3B5D202FFA4A00746EA9 /* WROrderMenuSystem 2.xcdatamodel */,
 				04CACBA61440379A0020D4E4 /* WROrderMenuSystem.xcdatamodel */,
 			);
-			currentVersion = 04CACBA61440379A0020D4E4 /* WROrderMenuSystem.xcdatamodel */;
+			currentVersion = 043C3B5D202FFA4A00746EA9 /* WROrderMenuSystem 2.xcdatamodel */;
 			path = WROrderMenuSystem.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
