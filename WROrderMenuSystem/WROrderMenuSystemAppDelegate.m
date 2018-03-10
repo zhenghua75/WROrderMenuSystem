@@ -35,6 +35,10 @@ NSTimeInterval defaultTimeout=60.0;
     [self.window setRootViewController:_mainViewController];
     [application setStatusBarHidden:YES];
     [self.window makeKeyAndVisible];
+    
+    NSDictionary *defaultValues = [NSDictionary dictionaryWithObjectsAndKeys: @"http://ylst.kmdx.cn:8800", @"ServerAddress",nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
+    
     return YES;
 }
 - (void)theProcess:(UIAlertView *)alertView {
@@ -193,29 +197,12 @@ NSTimeInterval defaultTimeout=60.0;
     _alert0 = [UIAlertController alertControllerWithTitle:@"同步所有" message:@"登录后才能进行同步！" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction*     action00 = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         NSLog(@"00 Cancel");
-        //UITextField* field1 = _alert0.textFields.firstObject;
-        //UITextField* field2 = _alert0.textFields.lastObject;
-        
-        //field1.text = @"";
-        //field2.text = @"";
     }];
     UIAlertAction*     action01 = [UIAlertAction actionWithTitle:@"同步所有" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSLog(@"01 ok");
-        //UITextField* field1 = _alert0.textFields.firstObject;
-        //UITextField* field2 = _alert0.textFields.lastObject;
         
         [self sync:0 userNameField:_userName passwdField:_passwd];
-        
-        //field1.text = @"";
-        //field2.text = @"";
     }];
-//    [_alert0 addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//        textField.placeholder =@"用户名";
-//    }];
-//    [_alert0 addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//        textField.secureTextEntry=YES;
-//        textField.placeholder=@"密码";
-//    }];
     [_alert0 addAction:action00];
     [_alert0 addAction:action01];
 }
@@ -223,29 +210,12 @@ NSTimeInterval defaultTimeout=60.0;
     _alert1 = [UIAlertController alertControllerWithTitle:@"同步数据" message:@"登录后才能进行同步！" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction*     action10 = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         NSLog(@"10 Cancel");
-//        UITextField* field1 = _alert1.textFields.firstObject;
-//        UITextField* field2 = _alert1.textFields.lastObject;
-//
-//        field1.text = @"";
-//        field2.text = @"";
     }];
     UIAlertAction*     action11 = [UIAlertAction actionWithTitle:@"同步数据" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSLog(@"11 ok");
-//        UITextField* field1 = _alert1.textFields.firstObject;
-//        UITextField* field2 = _alert1.textFields.lastObject;
         
         [self sync:1 userNameField:_userName passwdField:_passwd];
-        
-//        field1.text = @"";
-//        field2.text = @"";
     }];
-//    [_alert1 addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//        textField.placeholder =@"用户名";
-//    }];
-//    [_alert1 addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//        textField.secureTextEntry=YES;
-//        textField.placeholder=@"密码";
-//    }];
     [_alert1 addAction:action10];
     [_alert1 addAction:action11];
 }
@@ -253,29 +223,12 @@ NSTimeInterval defaultTimeout=60.0;
     _alert2 = [UIAlertController alertControllerWithTitle:@"同步图片" message:@"登录后才能进行同步！" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction*     action20 = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         NSLog(@"20 Cancel");
-//        UITextField* field1 = _alert2.textFields.firstObject;
-//        UITextField* field2 = _alert2.textFields.lastObject;
-//
-//        field1.text = @"";
-//        field2.text = @"";
     }];
     UIAlertAction*     action21 = [UIAlertAction actionWithTitle:@"同步图片" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSLog(@"21 ok");
-//        UITextField* field1 = _alert2.textFields.firstObject;
-//        UITextField* field2 = _alert2.textFields.lastObject;
         
         [self sync:2 userNameField:_userName passwdField:_passwd];
-        
-//        field1.text = @"";
-//        field2.text = @"";
     }];
-//    [_alert2 addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//        textField.placeholder =@"用户名";
-//    }];
-//    [_alert2 addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//        textField.secureTextEntry=YES;
-//        textField.placeholder=@"密码";
-//    }];
     [_alert2 addAction:action20];
     [_alert2 addAction:action21];
 }
@@ -285,24 +238,18 @@ NSTimeInterval defaultTimeout=60.0;
     UIAlertAction*     action30 = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         NSLog(@"30 Cancel");
         UITextField* field1 = _alert3.textFields.firstObject;
-        //UITextField* field2 = [_alert3.textFields objectAtIndex:1];
-        //UITextField* field3 = [_alert3.textFields objectAtIndex:2];
         UITextField* field2 = _alert3.textFields.lastObject;
         
         field1.text = @"";
         field2.text = @"";
-        //field3.text = @"";
-        //field4.text = @"";
     }];
     UIAlertAction*     action31 = [UIAlertAction actionWithTitle:@"开台" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSLog(@"31 ok");
         UITextField* field1 = _alert3.textFields.firstObject;
-        //UITextField* field2 = [_alert3.textFields objectAtIndex:1];
-        //UITextField* field3 = [_alert3.textFields objectAtIndex:2];
         UITextField* field2 = _alert3.textFields.lastObject;
         
-        NSString *username = _userName;//field1.text;
-        NSString *password = _passwd;//field2.text;
+        NSString *username = _userName;
+        NSString *password = _passwd;
         NSString *deskno = field1.text;
         NSString *quantity = field2.text;
         
@@ -337,8 +284,6 @@ NSTimeInterval defaultTimeout=60.0;
         }
         field1.text = @"";
         field2.text = @"";
-        //field3.text = @"";
-        //field4.text = @"";
         
         username=nil;
         password=nil;
@@ -346,13 +291,6 @@ NSTimeInterval defaultTimeout=60.0;
         quantity=nil;
         msg=nil;
     }];
-//    [_alert3 addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//        textField.placeholder =@"用户名";
-//    }];
-//    [_alert3 addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//        textField.secureTextEntry=YES;
-//        textField.placeholder=@"密码";
-//    }];
     [_alert3 addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder =@"桌台号";
     }];
@@ -370,21 +308,15 @@ NSTimeInterval defaultTimeout=60.0;
     UIAlertAction*     action40 = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         NSLog(@"40 Cancel");
         UITextField* field1 = _alert4.textFields.firstObject;
-        //UITextField* field2 = [_alert4.textFields objectAtIndex:1];
-        //UITextField* field3 = _alert4.textFields.lastObject;
         
         field1.text = @"";
-        //field2.text = @"";
-        //field3.text = @"";
     }];
     UIAlertAction*     action41 = [UIAlertAction actionWithTitle:@"桌号" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSLog(@"41 ok");
         UITextField* field1 = _alert4.textFields.firstObject;
-        //UITextField* field2 = [_alert4.textFields objectAtIndex:1];
-        //UITextField* field3 = _alert4.textFields.lastObject;
         
-        NSString *username = _userName;//field1.text;
-        NSString *password = _passwd;//field2.text;
+        NSString *username = _userName;
+        NSString *password = _passwd;
         NSString *deskno = field1.text;
         
         NSString *msg=@"";
@@ -412,21 +344,12 @@ NSTimeInterval defaultTimeout=60.0;
             alert=nil;
         }
         field1.text = @"";
-        //field2.text = @"";
-        //field3.text = @"";
         
         username=nil;
         password=nil;
         deskno=nil;
         msg=nil;
     }];
-//    [_alert4 addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//        textField.placeholder =@"用户名";
-//    }];
-//    [_alert4 addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//        textField.secureTextEntry=YES;
-//        textField.placeholder=@"密码";
-//    }];
     [_alert4 addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder =@"桌台号";
     }];
@@ -478,7 +401,6 @@ NSTimeInterval defaultTimeout=60.0;
     UITextField* textField = [_alert4.textFields firstObject];
     textField.text = deskNo;
     
-    //[_alertController dismissViewControllerAnimated:YES completion:nil];
     [_mainViewController presentViewController:_alert4 animated:YES completion:nil];
 }
 
@@ -486,9 +408,6 @@ NSTimeInterval defaultTimeout=60.0;
     [self saveContext];
 }
 
-//- (void)applicationWillEnterForeground:(UIApplication *)application{
-//     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
-//}
 
 #pragma mark - Core Data stack
 
@@ -512,7 +431,8 @@ NSTimeInterval defaultTimeout=60.0;
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil)
     {
-        __managedObjectContext = [[NSManagedObjectContext alloc] init];
+        //zhenghua 20180310
+        __managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];//init];
         [__managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return __managedObjectContext;

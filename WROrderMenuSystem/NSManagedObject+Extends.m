@@ -97,7 +97,10 @@
     [self setValue:[dict remoteUnitOfMeasure] forKey:@"unitOfMeasure"];
 }
 - (void)setLocalSpecs:(NSDictionary*)dict{
-    [self setValue:[dict remoteSpecs] forKey:@"specs"];
+    NSString* specs = [dict remoteSpecs];
+    if(specs){
+        [self setValue:specs forKey:@"specs"];
+    }
 }
 - (void)setLocalImageFileName:(NSDictionary*)dict{
     [self setValue:[dict remoteImageFileName] forKey:@"imageFileName"];
